@@ -542,14 +542,7 @@ const SITE = {
 
   // ── TOUR DATES ─────────────────────────────────────────
   // Leave the array empty [] to show "No upcoming dates" message
-  tourDates: [
-    { date: "Jul 12, 2026", venue: "Blue Note",              city: "New York, USA",     ticketLink: "#" },
-    { date: "Jul 28, 2026", venue: "Ronnie Scott's",         city: "London, UK",        ticketLink: "#" },
-    { date: "Aug 5, 2026",  venue: "New Morning",            city: "Paris, France",     ticketLink: "#" },
-    { date: "Aug 19, 2026", venue: "Jazz à Juan",            city: "Antibes, France",   ticketLink: "#" },
-    { date: "Sep 3, 2026",  venue: "Sunset Sunside",         city: "Paris, France",     ticketLink: "#" },
-    { date: "Sep 15, 2026", venue: "Porgy & Bess",           city: "Vienna, Austria",   ticketLink: "#" },
-  ],
+  tourDates: [],
 
   // ── CONTACT ────────────────────────────────────────────
   contactEmail:     "info@shavitprince.com",
@@ -737,7 +730,7 @@ if (SITE.showEmbed && SITE.embedUrl) {
 // Tour dates
 const tourCont = document.getElementById('tour-content');
 if (!SITE.tourDates.length) {
-  tourCont.innerHTML = `<p class="no-dates">No upcoming tour dates. Check back soon.</p>`;
+  tourCont.innerHTML = `<p class="no-dates">🎶 Tour dates coming soon — stay tuned!</p>`;
 } else {
   let rows = SITE.tourDates.map(d => `
     <tr class="tour-row">
