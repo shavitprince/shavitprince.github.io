@@ -610,6 +610,7 @@ const SITE = {
 
   // ── CONTACT ────────────────────────────────────────────
   contactEmail:    "info@shavitprince.com",
+   contactPhone:    "",
   contactBookings: "booking@shavitprince.com",
   contactAddress:  "New York, NY",
 
@@ -941,7 +942,7 @@ if (!SITE.tourDates.length) {
 const ci = document.getElementById('contact-info');
 ci.innerHTML = `
   <p>📧 <a href="mailto:${SITE.contactEmail}">${SITE.contactEmail}</a></p>
-  <p>📞 ${SITE.contactPhone}</p>
+  ${SITE.contactPhone ? `<p>📞 ${SITE.contactPhone}</p>` : ''}
   <p>🎤 Bookings: <a href="mailto:${SITE.contactBookings}">${SITE.contactBookings}</a></p>
   <p>📍 ${SITE.contactAddress}</p>`;
 
