@@ -558,7 +558,16 @@ const SITE = {
 
   // ── MUSIC / DISCOGRAPHY ────────────────────────────────
   albums: [
-     { title: "Tfila — Prayer", year: "2026 · Debut Single", cover: "https://i.ibb.co/LzsTjJv9/Shavit-3000x3000-Tfila.jpg", link: "https://ffm.to/shavitprince", desc: "A multilingual composition blending Masalit, an African language from Sudan, and Hebrew. Rooted in prayer, resilience, cultural dialogue, and the universal longing for peace and connection. The piece unfolds as a three-part musical journey, moving from division, through tension, and into hope, while combining contemporary classical composition, jazz, and global musical influences. Featuring voice, piano, saxophone, bass, drums, and percussion, the composition brings the rarely heard Masalit language into a contemporary musical setting. Shavit is the first musician from outside the Masalit community to sing in the Masalit language, using music as a bridge between cultures." },
+    {
+      title: "Tfila — Prayer",
+      year: "2026 · Debut Single",
+      cover: "https://i.ibb.co/LzsTjJv9/Shavit-3000x3000-Tfila.jpg",
+      link: "https://ffm.to/shavitprince",
+      paragraphs: [
+        "Tfila (Prayer) is the debut single from Shavit Prince's Connection Between Cultures project. A multilingual composition blending Masalit, an African language from Sudan, and Hebrew, Tfila is rooted in prayer, resilience, cultural dialogue, and the universal longing for peace and connection.",
+        "The piece unfolds as a three-part musical journey, moving from division, through tension, and into hope, while combining contemporary classical composition, jazz, and global musical influences. Featuring voice, piano, saxophone, bass, drums, and percussion, the composition brings the rarely heard Masalit language into a contemporary musical setting. Shavit is the first musician from outside the Masalit community to sing in the Masalit language, using music as a bridge between cultures."
+      ]
+    },
   ],
 
   // Full catalog link (Ravi-style). Set to "" to hide.
@@ -835,16 +844,31 @@ SITE.photos.forEach((photo, i) => {
 
 // Albums
 const musicGrid = document.getElementById('music-grid');
-SITE.albums.forEach(album => {
-  musicGrid.innerHTML += `
-    <div class="album-card">
-      <a href="${album.link}" target="_blank" rel="noopener">
-        <div class="album-cover"><img src="${album.cover}" alt="${album.title}" loading="lazy" /></div>
-        <p class="album-title">${album.title}</p>
-        <p class="album-year">${album.year}</p>
-      </a>
-    </div>`;
-});
+if (!SITE.albums || SITE.albums.length === 0) {
+  musicGrid.innerHTML = `<p class="no-dates">🎶 Music coming soon — stay tuned!</p>`;
+} else {
+  SITE.albums.forEach(album => {
+    const parasHTML = (album.paragraphs || []).map(para =>
+      `<p style="font-size:1.15rem;color:var(--light);font-weight:300;line-height:1.7;margin-bottom:20px;text-align:left;">${para}</p>`
+    ).join('');
+    musicGrid.innerHTML += `
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;grid-column:1/-1;">
+        <div class="bio-image">
+          <a href="${album.link}" target="_blank" rel="noopener">
+            <img src="${album.cover}" alt="${album.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%);" />
+          </a>
+        </div>
+        <div class="bio-text">
+          <p class="section-label">Debut Single</p>
+          <h2 class="section-title">${album.title}</h2>
+          <p class="album-year" style="margin-bottom:20px;">${album.year}</p>
+          <div class="divider"></div>
+          ${parasHTML}
+          <a class="btn" href="${album.link}" target="_blank" rel="noopener" style="margin-top:10px;display:inline-block;">♪ Listen Now</a>
+        </div>
+      </div>`;
+  });
+}
 
 // Full Catalog link
 if (SITE.fullCatalogLink) {
