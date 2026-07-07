@@ -845,9 +845,6 @@ SITE.photos.forEach((photo, i) => {
 // Albums
 const musicGrid = document.getElementById('music-grid');
 SITE.albums.forEach(album => {
-  const parasHTML = (album.paragraphs || []).map(para =>
-    `<p style="font-size:1rem;color:var(--light);font-weight:300;line-height:1.7;margin-top:12px;text-align:left;">${para}</p>`
-  ).join('');
   musicGrid.innerHTML += `
     <div class="album-card">
       <a href="${album.link}" target="_blank" rel="noopener">
@@ -855,7 +852,6 @@ SITE.albums.forEach(album => {
         <p class="album-title">${album.title}</p>
         <p class="album-year">${album.year}</p>
       </a>
-      ${parasHTML}
     </div>`;
 });
 
