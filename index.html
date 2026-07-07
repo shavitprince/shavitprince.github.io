@@ -556,7 +556,9 @@ const SITE = {
   ],
 
   // ── MUSIC / DISCOGRAPHY ────────────────────────────────
-  albums: [],
+  albums: [
+     { title: "Bridges",        year: "2023", cover: "https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?w=400&q=80", link: "#" },
+  ],
 
   // Full catalog link (Ravi-style). Set to "" to hide.
   fullCatalogLink: "",
@@ -817,20 +819,16 @@ SITE.photos.forEach((photo, i) => {
 
 // Albums
 const musicGrid = document.getElementById('music-grid');
-if (!SITE.albums || SITE.albums.length === 0) {
-  musicGrid.innerHTML = `<p class="no-dates">🎶 Music & Discography coming soon — stay tuned!</p>`;
-} else {
-  SITE.albums.forEach(album => {
-    musicGrid.innerHTML += `
-      <div class="album-card">
-        <a href="${album.link}" target="_blank" rel="noopener">
-          <div class="album-cover"><img src="${album.cover}" alt="${album.title}" loading="lazy" /></div>
-          <p class="album-title">${album.title}</p>
-          <p class="album-year">${album.year}</p>
-        </a>
-      </div>`;
-  });
-}
+SITE.albums.forEach(album => {
+  musicGrid.innerHTML += `
+    <div class="album-card">
+      <a href="${album.link}" target="_blank" rel="noopener">
+        <div class="album-cover"><img src="${album.cover}" alt="${album.title}" loading="lazy" /></div>
+        <p class="album-title">${album.title}</p>
+        <p class="album-year">${album.year}</p>
+      </a>
+    </div>`;
+});
 
 // Full Catalog link
 if (SITE.fullCatalogLink) {
