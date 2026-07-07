@@ -846,7 +846,7 @@ SITE.photos.forEach((photo, i) => {
 const musicGrid = document.getElementById('music-grid');
 SITE.albums.forEach(album => {
   const parasHTML = (album.paragraphs || []).map(para =>
-    `<p style="font-size:1rem;color:var(--light);font-weight:300;line-height:1.7;margin-top:16px;margin-bottom:16px;padding-right:180px;text-align:left;">${para}</p>`
+    `<p style="font-size:1rem;color:var(--light);font-weight:300;line-height:1.7;margin-top:12px;margin-bottom:12px;padding-right:6px;text-align:left;">${para}</p>`
   ).join('');
   musicGrid.innerHTML += `
     <div class="album-card">
