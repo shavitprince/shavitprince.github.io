@@ -241,7 +241,7 @@ section { padding: 100px 60px; }
 #projects { background: var(--black); }
 .projects-inner { max-width: 1200px; margin: 0 auto; }
 .projects-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 36px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
 }
 .project-card {
   position: relative; overflow: hidden; cursor: pointer;
@@ -590,11 +590,7 @@ const SITE = {
     {
       name: "Connection Between Cultures",
       tag: "Ongoing Project",
-      desc: "Connection Between Cultures (CBC) is a social-music project founded by composer and vocalist Shavit Prince that uses music and education to create dialogue between cultures, raise awareness about refugees and underserved communities, and highlight the power of human connection beyond borders, languages, and differences.",
-            "The project was born from Shavit’s belief that music is an international language — one that allows people to listen, understand, and connect beyond cultural and social barriers."Throughout her career as a musician, performing with diverse ensembles internationally, she witnessed the ability of music to bring people together and was inspired to create a project dedicated to cultural exchange and social awareness.",
-            "Since 2017, Shavit has conducted research on diverse cultures and refugee experiences, particularly among African communities and other displaced populations around the world. Through listening to personal stories, studying cultural traditions, and engaging with different communities, she has developed and continues to develop original compositions that honor and amplify voices that are often overlooked.",
-            "CBC combines Middle Eastern, African, Latin, jazz, and classical contemporary influences, incorporating languages such as Masalit, Tigrinya, Yoruba, Lingala, Hebrew, Arabic,  and English. Through concerts, educational programs, storytelling, and collaborations with nonprofit organizations, the project creates spaces for cultural exchange and encourages deeper understanding between communities.",
-            "The mission of Connection Between Cultures is to celebrate cultural diversity, promote empathy, and demonstrate how music can become a bridge between people. By connecting ancient traditions with contemporary expression, CBC seeks to inspire compassion, awareness, and a shared sense of humanity.",
+      desc: "Connection Between Cultures (CBC) is a social-music project founded by composer and vocalist Shavit Prince that uses music and education to create dialogue between cultures, raise awareness about refugees and underserved communities, and highlight the power of human connection beyond borders, languages, and differences. The project was born from Shavit's belief that music is an international language — one that allows people to listen, understand, and connect beyond cultural and social barriers. Since 2017, Shavit has conducted research on diverse cultures and refugee experiences, particularly among African communities and other displaced populations around the world. CBC combines Middle Eastern, African, Latin, jazz, and classical contemporary influences, incorporating languages such as Masalit, Tigrinya, Yoruba, Lingala, Hebrew, Arabic, and English. Through concerts, educational programs, storytelling, and collaborations with nonprofit organizations, the project creates spaces for cultural exchange and encourages deeper understanding between communities. The mission of Connection Between Cultures is to celebrate cultural diversity, promote empathy, and demonstrate how music can become a bridge between people.",
       image: "https://i.ibb.co/8LMXpfsq/CBC-logo.jpg",
       link: "",
       linkText: ""
@@ -884,16 +880,14 @@ if (!SITE.projects || SITE.projects.length === 0) {
 } else {
   SITE.projects.forEach(p => {
     projectsGrid.innerHTML += `
-      <div class="project-card">
-        <div class="project-img">
-          <img src="${p.image}" alt="${p.name}" loading="lazy" />
-        </div>
-        <div class="project-body">
-          <p class="project-tag">${p.tag}</p>
-          <p class="project-name">${p.name}</p>
-          <p class="project-desc">${p.desc}</p>
-          ${p.link ? `<a class="project-link" href="${p.link}">${p.linkText || 'Learn More'} →</a>` : ''}
-        </div>
+      <div class="bio-image reveal">
+        <img src="${p.image}" alt="${p.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%);" />
+      </div>
+      <div class="bio-text reveal">
+        <p class="section-label">${p.tag}</p>
+        <h2 class="section-title">${p.name}</h2>
+        <div class="divider"></div>
+        <p style="font-size:1.15rem;color:var(--light);font-weight:300;line-height:1.7;">${p.desc}</p>
       </div>`;
   });
 }
