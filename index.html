@@ -183,7 +183,7 @@ section { padding: 100px 60px; }
 #music { background: var(--dark2); }
 .music-inner { max-width: 1200px; margin: 0 auto; }
 .music-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 32px;
+  display: grid; grid-template-columns: 1fr; gap: 32px;
 }
 .album-card { text-align: center; cursor: pointer; }
 .album-cover {
@@ -846,7 +846,7 @@ SITE.photos.forEach((photo, i) => {
 const musicGrid = document.getElementById('music-grid');
 SITE.albums.forEach(album => {
   const parasHTML = (album.paragraphs || []).map(para =>
-    `<p style="font-size:1.15rem;color:var(--light);font-weight:300;line-height:1.7;margin-bottom:20px;text-align:left;">${para}</p>`
+    `<p style="font-size:1rem;color:var(--light);font-weight:300;line-height:1.7;margin-top:16px;margin-bottom:16px;text-align:left;">${para}</p>`
   ).join('');
   musicGrid.innerHTML += `
     <div class="album-card">
