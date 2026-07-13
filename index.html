@@ -911,8 +911,8 @@ if (!SITE.projects || SITE.projects.length === 0) {
 } else {
   SITE.projects.forEach(p => {
     projectsGrid.innerHTML += `
-      <div class="image reveal">
-        <img src="${p.image}" alt="${p.name}" loading="lazy" />
+      <div class="boi-image reveal">
+        <img src="${p.image}" alt="${p.name}" loading="lazy" style="width:80%;height:80%;object-fit:cover;filter:grayscale(20%);" />
       </div>
       <div class="bio-text reveal">
         <p class="section-label">${p.tag}</p>
