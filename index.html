@@ -18,7 +18,7 @@
 <meta name="twitter:card" content="summary_large_image">
    
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet"/>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 /* ============================================================
    DESIGN TOKENS
@@ -911,8 +911,8 @@ if (!SITE.projects || SITE.projects.length === 0) {
 } else {
   SITE.projects.forEach(p => {
     projectsGrid.innerHTML += `
-      <div class="bio-image reveal">
-        <img src="${p.image}" alt="${p.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%);" />
+      <div class="project-image-full reveal">
+        <img src="${p.image}" alt="${p.name}" loading="lazy" />
       </div>
       <div class="bio-text reveal">
         <p class="section-label">${p.tag}</p>
@@ -991,14 +991,18 @@ ci.innerHTML = `
 const socLinks = document.createElement('div');
 socLinks.className = 'contact-socials';
 const socMap = {
-  instagram: 'Instagram', facebook: 'Facebook',
-  spotify: 'Spotify', youtube: 'YouTube', soundcloud: 'SoundCloud'
+  instagram: { label: 'Instagram', icon: 'fa-instagram' },
+  facebook:  { label: 'Facebook',  icon: 'fa-facebook' },
+  spotify:   { label: 'Spotify',   icon: 'fa-spotify' },
+  youtube:   { label: 'YouTube',   icon: 'fa-youtube' },
+  soundcloud:{ label: 'SoundCloud',icon: 'fa-soundcloud' }
 };
 Object.entries(SITE.socials).forEach(([k, v]) => {
   if (v) {
     const a = document.createElement('a');
     a.href = v; a.className = 'social-link';
-    a.textContent = socMap[k]; a.target = '_blank'; a.rel = 'noopener';
+    a.innerHTML = `<i class="fa-brands ${socMap[k].icon}"></i> ${socMap[k].label}`;
+    a.target = '_blank'; a.rel = 'noopener';
     socLinks.appendChild(a);
   }
 });
