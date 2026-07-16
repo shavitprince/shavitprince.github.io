@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Shavit Prince | Connection Between Cultures</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
 
    <!-- SEO Meta Tags -->
 <meta name="description" content="Shavit Prince — Multi-cultural music artist. Jazz, World Music, live performances and bookings. Connection Between Cultures.">
@@ -17,6 +16,12 @@
 <meta property="og:image" content="https://i.ibb.co/xtC9bMfP/1000144880.jpg">
 <meta property="og:url" content="https://shavitprince.com">
 <meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
    
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -649,6 +654,15 @@ const SITE = {
     { name: "Artist One-Sheet",        meta: "PDF · 1 page",              href: "#" },
   ],
   pressContactEmail: "press@shavitprince.com",
+   
+  pressClippings: [
+  {
+    outlet: "Magazine Miami",
+    caption: "Hebrew press feature — July 2026",
+    image: "PASTE_YOUR_IBB_LINK_HERE",
+    link: ""   // add the article URL here later
+  },
+],
 
   // ── TOUR DATES ─────────────────────────────────────────
   tourDates: [],
@@ -959,7 +973,23 @@ downloadsHTML += `
   </div>
 </div>`;
 
-presskitLayout.innerHTML = `<p class="no-dates">🎶 Press Kit coming soon — stay tuned!</p>`;
+let clippingsHTML = '';
+if (SITE.pressClippings && SITE.pressClippings.length) {
+  clippingsHTML = '<div style="margin-top:36px;"><p class="section-label" style="margin-bottom:20px;">In the Press</p><div style="display:flex;flex-direction:column;gap:24px;">';
+  SITE.pressClippings.forEach(c => {
+    const inner = `<img src="${c.image}" alt="${c.outlet}" loading="lazy" style="width:100%;display:block;filter:grayscale(10%);" />`;
+    clippingsHTML += `
+      <div style="border:1px solid rgba(201,168,76,0.18);">
+        ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener">${inner}</a>` : inner}
+        <div style="padding:14px 18px;background:rgba(255,255,255,0.02);">
+          <p class="press-dl-name">${c.outlet}</p>
+          <p class="press-dl-meta">${c.caption}</p>
+        </div>
+      </div>`;
+  });
+  clippingsHTML += '</div></div>';
+}
+presskitLayout.innerHTML = quotesHTML + downloadsHTML + clippingsHTML;
 
 // Tour dates
 const tourCont = document.getElementById('tour-content');
