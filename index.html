@@ -660,7 +660,7 @@ const SITE = {
     outlet: "Magazine Miami",
     caption: "Hebrew press feature — July 2026",
     image: "PASTE_YOUR_IBB_LINK_HERE",
-    link: ""   // add the article URL here later
+    link: "https://i.ibb.co/ymXtwLRR/Whats-App-Image-2026-07-16-at-07-00-20.jpg"   
   },
 ],
 
@@ -926,7 +926,7 @@ if (!SITE.projects || SITE.projects.length === 0) {
 } else {
   SITE.projects.forEach(p => {
     projectsGrid.innerHTML += `
-      <div class="boi-image reveal">
+      <div class="project-image-full reveal">
         <img src="${p.image}" alt="${p.name}" loading="lazy" style="width:80%;height:80%;object-fit:cover;filter:grayscale(20%);" />
       </div>
       <div class="bio-text reveal">
@@ -989,7 +989,7 @@ if (SITE.pressClippings && SITE.pressClippings.length) {
   });
   clippingsHTML += '</div></div>';
 }
-presskitLayout.innerHTML = quotesHTML + downloadsHTML + clippingsHTML;
+presskitLayout.innerHTML = clippingsHTML;
 
 // Tour dates
 const tourCont = document.getElementById('tour-content');
