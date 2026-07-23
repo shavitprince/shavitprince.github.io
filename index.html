@@ -505,7 +505,7 @@ footer {
   .nav-links.open {
     display: flex; flex-direction: column;
     position: fixed; inset: 0; background: var(--black);
-    align-items: center; justify-content: center; gap: 32px;
+    align-items: center; justify-content: center; gap: 32px; z-index: 99;
   }
   .nav-links.open a { font-size: 1.1rem; }
   section { padding: 70px 24px; }
@@ -540,7 +540,7 @@ const SITE = {
   tagline:      "Where rhythms meet, borders dissolve.",
 
   // ── HERO ───────────────────────────────────────────────
-  heroImage:    "https://i.ibb.co/1J4dTKwx/1000144901.jpg",
+  heroImage:    "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1800&q=80",
   heroBtn:      { text: "♪ Listen to My Music", link: "https://open.spotify.com/album/6uHbxuzWhGovVB0UTDWice" },
 
   // ── BIO ────────────────────────────────────────────────
