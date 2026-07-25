@@ -500,14 +500,18 @@ footer {
 /* ── RESPONSIVE ──────────────────────────────────────────── */
 @media (max-width: 900px) {
   nav { padding: 18px 24px; }
-  .nav-links { display: none; }
-  .nav-toggle { display: flex; }
-  .nav-links.open {
-    display: flex; flex-direction: column;
-    position: fixed; inset: 0; background: var(--black);
-    align-items: center; justify-content: center; gap: 32px; z-index: 99;
-  }
-  .nav-links.open a { font-size: 1.1rem; }
+  .nav-links {
+  display: flex; flex-direction: column;
+  position: fixed; inset: 0; background: var(--black);
+  align-items: center; justify-content: center; gap: 32px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.nav-toggle { display: flex; }
+.nav-links.open {
+  opacity: 1; visibility: visible; pointer-events: auto;
+}
+.nav-links.open a { font-size: 1.1rem; }
   section { padding: 70px 24px; }
   .hero-content { padding: 0 24px 60px; }
   .bio-inner { grid-template-columns: 1fr; gap: 40px; }
