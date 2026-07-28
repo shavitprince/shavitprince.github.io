@@ -82,7 +82,6 @@ nav.scrolled { background: rgba(10,10,10,0.97); }
 .nav-links a:hover { color: var(--gold); }
 .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
 .nav-toggle span { width: 26px; height: 1px; background: var(--white); transition: all 0.3s; }
-
    
 /* Hamburger -> X transform when menu is open */
 .nav-toggle.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
@@ -537,6 +536,19 @@ footer {
   opacity: 1; visibility: visible; pointer-events: auto;
 }
 .nav-links.open a { font-size: 1.1rem; }
+
+/* Explicit X / close control inside the open mobile menu */
+.nav-close {
+  display: none;
+  position: fixed; top: 24px; right: 24px;
+  font-size: 2rem; line-height: 1; color: var(--gold);
+  cursor: pointer; z-index: 101;
+}
+.nav-links.open ~ .nav-close,
+.nav-links.open + .nav-close {
+  display: block;
+}
+   
   section { padding: 70px 24px; }
   .hero-content { padding: 0 24px 60px; }
   .bio-inner { grid-template-columns: 1fr; gap: 40px; }
